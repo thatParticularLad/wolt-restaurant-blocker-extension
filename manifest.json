@@ -1,0 +1,31 @@
+{
+    "manifest_version":2,
+    "name": "Wolt Restaurant Blocker",
+    "version": "0.1.0",
+    "description": "Allows you to hide the restaurants you're tired of seeing on Wolt",
+    "icons": { 
+        "16": "assets/icon.png",
+        "48": "assets/icon.png",
+        "128": "assets/icon.png" 
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://wolt.com/*"],
+            "js":["main.js"],
+            "css":["styles.css"]
+        }
+    ],
+    "background":{
+        "scripts":["contextMenu.js"],
+        "persistent":false
+    },
+    "browser_action":{
+        "default_icon":"assets/icon.png",
+        "default_popup":"popup/popup.html"
+    },
+    "permissions": [
+        "storage",
+        "contextMenus",
+        "notifications"
+    ]
+}
