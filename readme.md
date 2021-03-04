@@ -7,3 +7,7 @@
 > Future features(?):
 > - Hiding all restaurants below a certain rating and/or delivery cost
 > - Select region and langue of wolt web app (now Vilnius is hardcoded as is the language)
+
+KNOWN ISSUES:
+ - removeChild removes wrong element when in main page
+ - can block the same restaurant twice

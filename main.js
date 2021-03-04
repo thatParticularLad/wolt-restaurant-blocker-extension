@@ -1,20 +1,20 @@
 //placeholder blocked restaurants
 const blockedNames = ['grill-food', 'doublepizza']
 
-// Select the node that will be observed for mutations
-const mainContent = document.getElementById('mainContent');
+// // Select the node that will be observed for mutations
+// const mainContent = document.getElementById('mainContent');
 
-// Options for the observer (which mutations to observe)
-const config = { attributes: false, childList: true, subtree: true };
+// // Options for the observer (which mutations to observe)
+// const config = { attributes: false, childList: true, subtree: true };
 
-// Callback function to execute when mutations are observed
-const callback = function(mutationsList, observer) {
-    for(const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-            filterRestaurants()
-        }
-    }
-};
+// // Callback function to execute when mutations are observed
+// const callback = function(mutationsList, observer) {
+//     for(const mutation of mutationsList) {
+//         if (mutation.type === 'childList') {
+//             filterRestaurants()
+//         }
+//     }
+// };
 
 function getRestaurants(){
         const restaurants = document.querySelectorAll(`[href*='ltu/vilnius/restaurant/']`);
@@ -31,6 +31,7 @@ function filterRestaurants(){
             blockedNames.blocked.forEach(blockedName=>{
                 if(restaurant.href.includes(blockedName)){
                     if(restaurant.firstChild !== null){
+                        alert('Filtered' + restaurant)
                         restaurant.firstChild.remove()
                     }
                 }
@@ -53,11 +54,11 @@ window.onload = function(){
 window.addEventListener("click", filterRestaurants());
 // Create an observer instance linked to the callback function
 //  which filters the restaurants
-const observer = new MutationObserver(callback);
+// const observer = new MutationObserver(callback);
 
-// Start observing the target node for configured mutations
-observer.observe(mainContent, config);
+// // Start observing the target node for configured mutations
+// observer.observe(mainContent, config);
 
-
+setInterval(filterRestaurants, 500);
 
 
