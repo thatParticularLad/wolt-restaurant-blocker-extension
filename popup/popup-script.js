@@ -3,9 +3,8 @@ const restaurants = document.getElementById('restaurants');
 //Phrases to show when no restaurants are hidden/shown in the popup
 //weight describest the likelihood of a phrase appearing
 const randomPhrases = [
-    { phrase:"You can block them by right clicking and selecting the <b>'Hide this Restaurant'</b> option.", weight:98},
-    { phrase:"Guess you have a fairly wide palate.", weight: 2},
-    { phrase: "By the way, i'm in no way affiliated with Wolt.", weight: 1},
+    { phrase:"You can block them by right clicking and selecting the <b>'Hide this Restaurant'</b> option.", weight:99},
+    { phrase:"By the way, i'm in no way affiliated with Wolt.", weight: 1},
 ]
 function getPhrase(){
     let totalWeight=0;
@@ -17,8 +16,8 @@ function getPhrase(){
         if(rnd < randomPhrases[i].weight){
             return randomPhrases[i].phrase;
         }
+        rnd-= randomPhrases[i].weight;
     }
-        rnd-= phrase.weight;
 }
 
 

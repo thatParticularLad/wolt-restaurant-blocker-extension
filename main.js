@@ -31,7 +31,6 @@ function filterRestaurants(){
             blockedNames.blocked.forEach(blockedName=>{
                 if(restaurant.href.includes(blockedName)){
                     if(restaurant.firstChild !== null){
-                        alert('Filtered' + restaurant)
                         restaurant.firstChild.remove()
                     }
                 }
