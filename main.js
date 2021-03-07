@@ -10,13 +10,13 @@ function filterRestaurants(){
     let restaurants = getRestaurants();    
     //now that we have em, we filter through each,
         //if current href matches restaurant name we already have in our blockList
-        // and remove them from dom
+        // and set their visibility to none
     restaurants.forEach(restaurant =>{
         chrome.storage.local.get('blocked', blockedNames=>{
             blockedNames.blocked.forEach(blockedName=>{
                 if(restaurant.href.includes(blockedName)){
-                    if(restaurant.firstChild !== null){
-                        restaurant.firstChild.remove()
+                    if(restaurant.firstChild !== null && !isHidden(restaurant.firstChild)){
+                        restaurant.firstChild.classList.add('hidden')
                     }
                 }
             })
@@ -24,6 +24,11 @@ function filterRestaurants(){
     })
 }
 
+// Where el is the DOM element you'd like to test for visibility
+function isHidden(el) {
+    var style = window.getComputedStyle(el);
+    return (style.display === 'none')
+}
 
 window.onload = function(){
     chrome.storage.local.get('blocked', function(restaurants){
@@ -35,7 +40,7 @@ window.onload = function(){
     });
     
 }
-window.addEventListener("click", filterRestaurants());
+// window.addEventListener("click", filterRestaurants());
 
 setInterval(filterRestaurants, 500);
 
