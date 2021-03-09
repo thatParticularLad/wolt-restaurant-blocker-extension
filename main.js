@@ -1,5 +1,5 @@
 //placeholder blocked restaurants
-const blockedNames = ['grill-food']
+const blockedNames = ['vili-pica']
 
 function getRestaurants(){
         const restaurants = document.querySelectorAll(`[href*='ltu/vilnius/restaurant/']`);
