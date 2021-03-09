@@ -1,9 +1,14 @@
 //placeholder blocked restaurants
-const blockedNames = ['grill-food', 'doublepizza']
+const blockedNames = ['grill-food']
 
 function getRestaurants(){
         const restaurants = document.querySelectorAll(`[href*='ltu/vilnius/restaurant/']`);
         return restaurants 
+}
+
+function isHidden(el) {
+    var style = window.getComputedStyle(el);
+    return (style.display === 'none')
 }
 
 function filterRestaurants(){
@@ -24,17 +29,10 @@ function filterRestaurants(){
     })
 }
 
-// Where el is the DOM element you'd like to test for visibility
-function isHidden(el) {
-    var style = window.getComputedStyle(el);
-    return (style.display === 'none')
-}
 
 window.onload = function(){
     chrome.storage.local.get('blocked', function(restaurants){
-        // chrome.storage.local.clear()
         if(restaurants.blocked==undefined){
-            //add initial blocked restaurant(s)
             chrome.storage.local.set({'blocked': blockedNames})
         }
     });

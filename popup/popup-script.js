@@ -1,7 +1,7 @@
 const restaurants = document.getElementById('restaurants');
 
 //Phrases to show when no restaurants are hidden/shown in the popup
-//weight describest the likelihood of a phrase appearing
+//weight describes the likelihood of a phrase appearing
 const randomPhrases = [
     { phrase:"You can block them by right clicking and selecting the <b>'Hide this Restaurant'</b> option.", weight:99},
     { phrase:"By the way, i'm in no way affiliated with Wolt.", weight: 1},
@@ -50,7 +50,7 @@ function initPopup(){
 );
 }
 
-//remove function
+//whitelist function
 function removeFromBlocked(restaurant){
     chrome.storage.local.get('blocked', items=>{
         const index = items.blocked.indexOf(restaurant)
