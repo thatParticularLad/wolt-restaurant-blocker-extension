@@ -1,8 +1,11 @@
-//placeholder blocked restaurants
-const blockedNames = ['vili-pica']
 
+
+//placeholder blocked restaurants
+const blockedNames = ['that-terrible-spot']
+
+//ACTUAL PROGRAM
 function getRestaurants(){
-        const restaurants = document.querySelectorAll(`[href*='ltu/vilnius/restaurant/']`);
+        const restaurants = document.querySelectorAll(`[href*='/restaurant/']`);
         return restaurants 
 }
 
@@ -41,5 +44,7 @@ window.onload = function(){
 // window.addEventListener("click", filterRestaurants());
 
 setInterval(filterRestaurants, 500);
+
+
 
 
